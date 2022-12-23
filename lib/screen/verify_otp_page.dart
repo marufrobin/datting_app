@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class VerifyOtpPage extends StatelessWidget {
   const VerifyOtpPage({Key? key}) : super(key: key);
@@ -6,6 +7,7 @@ class VerifyOtpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController phoneNumberController = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -27,16 +29,29 @@ class VerifyOtpPage extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.start,
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextFormField(
-              keyboardType: TextInputType.number,
-              controller: phoneNumberController,
-              validator: (value) {},
-              decoration: InputDecoration(
-                  hintStyle: TextStyle(fontFamily: "Roboto"),
-                  hintText: "OTP PIN",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8)))),
-            ),
+            // TextFormField(
+            //   keyboardType: TextInputType.number,
+            //   controller: phoneNumberController,
+            //   validator: (value) {},
+            //   decoration: InputDecoration(
+            //       hintStyle: TextStyle(fontFamily: "Roboto"),
+            //       hintText: "OTP PIN",
+            //       border: OutlineInputBorder(
+            //           borderRadius: BorderRadius.all(Radius.circular(8)))),
+            // ),
+            Form(
+                key: _formKey,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    buildOTPTextBox(context),
+                    buildOTPTextBox(context),
+                    buildOTPTextBox(context),
+                    buildOTPTextBox(context),
+                    buildOTPTextBox(context),
+                    buildOTPTextBox(context),
+                  ],
+                )),
             Container(
               margin: EdgeInsets.symmetric(
                 vertical: 24,
@@ -58,6 +73,31 @@ class VerifyOtpPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  SizedBox buildOTPTextBox(BuildContext context) {
+    return SizedBox(
+      height: 56,
+      width: 54,
+      child: TextFormField(
+        onChanged: (value) {
+          if (value.length == 1) {
+            FocusScope.of(context).nextFocus();
+          }
+        },
+        validator: (value) {},
+        style: TextStyle(fontFamily: "Roboto", fontSize: 20),
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly
+        ],
+        decoration: InputDecoration(
+            hintText: "0",
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
       ),
     );
   }

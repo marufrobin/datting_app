@@ -7,6 +7,8 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController phoneNumberController = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -23,16 +25,19 @@ class SignUpPage extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextFormField(
-              keyboardType: TextInputType.number,
-              controller: phoneNumberController,
-              validator: (value) {},
-              decoration: InputDecoration(
-                  hintStyle: TextStyle(fontFamily: "Roboto"),
-                  prefixIcon: Icon(Icons.phone),
-                  hintText: "Phone Number",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8)))),
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                keyboardType: TextInputType.number,
+                controller: phoneNumberController,
+                validator: (value) {},
+                decoration: InputDecoration(
+                    hintStyle: TextStyle(fontFamily: "Roboto"),
+                    prefixIcon: Icon(Icons.phone),
+                    hintText: "Phone Number",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)))),
+              ),
             ),
             Container(
               margin: EdgeInsets.symmetric(
