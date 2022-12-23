@@ -10,7 +10,7 @@ class FeedPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         title: Text(
           "Explore",
           style: TextStyle(
@@ -39,6 +39,37 @@ class FeedPage extends StatelessWidget {
             width: 16,
           )
         ],
+      ),
+      body: Container(
+        child: GridView.builder(
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemCount: modelData.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 4,
+                        blurRadius: 8,
+                        offset: Offset(0, 3))
+                  ],
+                  image: DecorationImage(
+                      image: AssetImage(
+                        "${modelData[index].img}",
+                      ),
+                      fit: BoxFit.fill)
+                  // color: Colors.cyanAccent,
+                  ),
+            );
+          },
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, mainAxisExtent: 260),
+        ),
       ),
     );
   }
