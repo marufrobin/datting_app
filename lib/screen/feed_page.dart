@@ -104,7 +104,29 @@ class FeedPage extends StatelessWidget {
                           image: AssetImage(modelData[index].img),
                           fit: BoxFit.cover)),
                 ),
-                Expanded(child: Placeholder())
+                Expanded(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        splashColor: Colors.grey,
+                        icon: Icon(
+                          Icons.close,
+                          size: 30,
+                        )),
+                    MaterialButton(
+                        onPressed: () {},
+                        child: Image.asset("images/love.png")),
+                    IconButton(
+                        onPressed: () {},
+                        splashColor: Colors.grey,
+                        icon: Icon(
+                          Icons.remove_red_eye_outlined,
+                          size: 30,
+                        )),
+                  ],
+                ))
               ],
             ),
           ),
