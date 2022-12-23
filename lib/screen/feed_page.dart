@@ -62,7 +62,7 @@ class FeedPage extends StatelessWidget {
                       image: AssetImage(
                         "${modelData[index].img}",
                       ),
-                      fit: BoxFit.fill)
+                      fit: BoxFit.cover)
                   // color: Colors.cyanAccent,
                   ),
             );
