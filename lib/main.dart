@@ -1,4 +1,4 @@
-import 'package:datting_app/splash_page.dart';
+import 'package:datting_app/screen/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

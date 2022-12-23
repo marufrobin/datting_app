@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:datting_app/signup_page.dart';
+import 'package:datting_app/screen/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 

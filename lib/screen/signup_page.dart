@@ -1,4 +1,4 @@
-import 'package:datting_app/verify_otp_page.dart';
+import 'package:datting_app/screen/verify_otp_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
