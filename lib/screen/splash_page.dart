@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ),
         Positioned(
-          left: 160,
+          left: MediaQuery.of(context).size.width * 0.42,
           bottom: 0,
           child: Center(
             child: LoadingAnimationWidget.stretchedDots(
