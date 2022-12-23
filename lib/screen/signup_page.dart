@@ -24,6 +24,7 @@ class SignUpPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: phoneNumberController,
               validator: (value) {},
               decoration: InputDecoration(

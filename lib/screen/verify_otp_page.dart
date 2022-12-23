@@ -28,6 +28,7 @@ class VerifyOtpPage extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: phoneNumberController,
               validator: (value) {},
               decoration: InputDecoration(
@@ -54,7 +55,7 @@ class VerifyOtpPage extends StatelessWidget {
                       color: Colors.white, fontSize: 16, fontFamily: "Roboto"),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
