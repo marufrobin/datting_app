@@ -2,9 +2,13 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:datting_app/model/model_data.dart';
 import 'package:flutter/material.dart';
 
+import '../config/consts.dart';
+import '../widgets/FeedPhotoCard.dart';
+
 class FeedPage extends StatelessWidget {
   FeedPage({Key? key}) : super(key: key);
-  var modelData = ModelData.modelData();
+
+  var feedItems = FeedItem.modelData();
 
   @override
   Widget build(BuildContext context) {
@@ -12,69 +16,52 @@ class FeedPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "Explore",
           style: TextStyle(
-            color: Color(0xff49454F),
-            fontSize: 18,
+            color: kColorDark,
+            fontSize: 22,
             fontFamily: "OpenSans",
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
           //Notification button
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications_outlined,
-                color: Colors.black,
-              )),
-
+            onPressed: () {},
+            icon: const Icon(
+              Icons.notifications_outlined,
+              color: Colors.black,
+              size: 35,
+            ),
+          ),
           //Profile button
           CircleAvatar(
             backgroundColor: Colors.black45,
             radius: 20,
-            backgroundImage: AssetImage('${modelData[0].img}'),
+            backgroundImage: AssetImage(feedItems[0].img),
             // child: Image.asset(),
           ),
-          SizedBox(
-            width: 16,
-          )
+          const SizedBox(width: 16)
         ],
       ),
-      body: Container(
-        child: GridView.builder(
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: modelData.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                buildProfileBottomSheet(context, index);
-              },
-              child: Container(
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 4,
-                          blurRadius: 8,
-                          offset: Offset(0, 3))
-                    ],
-                    image: DecorationImage(
-                        image: AssetImage(
-                          "${modelData[index].img}",
-                        ),
-                        fit: BoxFit.cover)
-                    // color: Colors.cyanAccent,
-                    ),
-              ),
-            );
-          },
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, mainAxisExtent: 260),
+      body: GridView.builder(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(8),
+        scrollDirection: Axis.vertical,
+        itemCount: feedItems.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              buildProfileBottomSheet(context, index);
+            },
+            child: FeedPhotoCard(feedItem: feedItems[index]),
+          );
+        },
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: 260,
         ),
       ),
     );
@@ -101,7 +88,7 @@ class FeedPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage(modelData[index].img),
+                          image: AssetImage(feedItems[index].img),
                           fit: BoxFit.cover)),
                 ),
                 Expanded(
