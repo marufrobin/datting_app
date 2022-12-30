@@ -38,7 +38,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           iconSize: 24,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           duration: Duration(milliseconds: 400),
-          tabBackgroundColor: Colors.grey[100]!,
+          tabBackgroundColor: Colors.grey[300]!,
           color: kColorDark,
           tabs: const [
             GButton(

@@ -74,10 +74,10 @@ class FeedPage extends StatelessWidget {
       context: context,
       builder: (context) {
         return Container(
-          margin: EdgeInsets.all(16),
+          margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
           child: BlurryContainer(
             blur: 10, color: Colors.white.withOpacity(0.5),
-            height: 430,
+            height: 460,
             // elevation: 6,
             child: Column(
               children: [
@@ -93,8 +93,34 @@ class FeedPage extends StatelessWidget {
                 ),
                 Expanded(
                     child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("data"),
+                    Row(
+                      children: [
+                        Text(
+                          "${feedItems[index].name}, ${feedItems[index].age}",
+                          style: TextStyle(
+                            color: Color(0xff21005D),
+                            fontSize: 16,
+                            fontFamily: "Montserrat",
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Image.asset(
+                          "images/doneIcon.png",
+                          fit: BoxFit.fill,
+                        )
+                      ],
+                    ),
+                    Text(
+                      "${feedItems[index].address}",
+                      style: TextStyle(
+                        color: Color(0xff21005D),
+                        fontSize: 16,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
